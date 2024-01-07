@@ -25,8 +25,9 @@ app.use(helmet())
 app.use(express.json());
 app.use(session({secret, resave: false, saveUninitialized: true}))
 
+const allowedOrigins = ['https://backend-i3qa.onrender.com', 'https://yelpcamp-t8sb.onrender.com'];
 app.use(cors({
-    origin: 'https://backend-i3qa.onrender.com/',
+    origin: allowedOrigins,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
