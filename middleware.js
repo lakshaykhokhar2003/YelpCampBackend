@@ -24,7 +24,7 @@ module.exports.validateReview = (req, res, next) => {
 module.exports.isReviewAuthor = async (req, res, next) => {
     const {reviewId} = req.params;
     const review = await Review.findById(reviewId);
-    if (!review.author.toString() === (req.query.user)) {
+    if (review.author.toString() !== (req.query.user)) {
         return res.status(401).json({message: 'You do not have permission to do that!'});
     }
     next();
@@ -33,7 +33,7 @@ module.exports.isReviewAuthor = async (req, res, next) => {
 module.exports.isAuthor = async (req, res, next) => {
     const {id} = req.params;
     const campground = await Campground.findById(id);
-    if (!campground.author.toString() === req.query.user) {
+    if (campground.author.toString() !== req.query.user) {
         return res.status(401).json({message: 'You do not have permission to do that!'});
     }
     next();
