@@ -11,6 +11,7 @@ const {MongoClient, ServerApiVersion} = require('mongodb');
 const passport = require("passport");
 const LocalStrategy = require('passport-local')
 const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/yelp-camp";
+console.log(process.env.MONGODB_URI)
 
 const User = require('./models/userModel')
 const campgroundRoutes = require('./routes/campgroundRoutes')
