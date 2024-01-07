@@ -11,7 +11,6 @@ const {MongoClient, ServerApiVersion} = require('mongodb');
 const passport = require("passport");
 const LocalStrategy = require('passport-local')
 const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/yelp-camp";
-console.log(process.env.MONGODB_URI)
 
 const User = require('./models/userModel')
 const campgroundRoutes = require('./routes/campgroundRoutes')
@@ -27,7 +26,7 @@ app.use(express.json());
 app.use(session({secret, resave: false, saveUninitialized: true}))
 
 app.use(cors({
-    origin: 'http://localhost:3001',
+    origin: 'https://backend-i3qa.onrender.com/',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
